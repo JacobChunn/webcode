@@ -4,21 +4,17 @@ function createIO()
 	rinput = createSlider(0,255,0);
     rinput.position(50,50);
     rinput.size(100);
-	fill(255,0,0);
 	
-	ellipse(38,63, 25,25);
    
     ginput = createSlider(0,255,0);
     ginput.position(50,100);
     ginput.size(100);
-	fill(0,255,0);
-	ellipse(38,113, 25,25);
+	
    
     binput = createSlider(0,255,0);
     binput.position(50,150);
     binput.size(100);
-	fill(0,0,255);
-	ellipse(38,163, 25,25);
+	
    
     gridToggle = createButton('Toggle Grid');
     gridToggle.position(52,300);
@@ -53,18 +49,24 @@ function createIO()
 
 function colorSquare(ri,gi,bi)
 {
-	fill(col);
-	stroke(255);
-	ellipse(100,210, 50,50);
-	
-	fill(0);
-	noStroke();
-	rect(40,244,150,40);
-	
 	colstr = ri + ', ' + gi + ', '  + bi;
 	textSize(24);
 	fill(255);
-	text(colstr,42,265)
+	strokeWeight(4);
+	stroke(0);
+	text(colstr,42,225)
+	strokeWeight(1);
+}
+
+function redBlueGreenEllipse() {
+	fill(255,0,0);
+	ellipse(38,63, 25,25);
+	
+	fill(0,255,0);
+	ellipse(38,113, 25,25);
+	
+	fill(0,0,255);
+	ellipse(38,163, 25,25);
 }
 
 function setSingle()
@@ -101,15 +103,23 @@ function setCallig()
 
 function gridDraw() 
 {
-    for (var i=0; i < rows; i++) 
+	noStroke();
+    for (var i=0; i < cols; i++) 
 	{
-        line(x.arrPos,y.arrPos + (boxsize * i), x.arrPos + (cols * boxsize),y.arrPos + (boxsize * i));
+        for (var j=0; j < rows; j++) 
+		{
+			fill(arrPos[i][j].tell());
+			arrPos[i][j].show();
+        }
     }
-   
-    for (var j=0; j < cols; j++) 
-	{
-        line(x.arrPos + (boxsize * j),y.arrPos, x.arrPos + (boxsize * j),y.arrPos + (boxsize * rows));
-    }
+	
+	stroke(0);
+	for (var i=0; i <= rows; i++) {
+		line(x.arrPos,y.arrPos + (i * boxsize), x.arrPos + (cols * boxsize), y.arrPos + (i * boxsize));
+	}
+	for (var j=0; j <= cols; j++) {
+		line(x.arrPos + (j * boxsize), y.arrPos, x.arrPos + (j * boxsize), y.arrPos + (rows * boxsize));
+	}
 }
  
 function gridCheck() 

@@ -21,8 +21,8 @@ var y = {arrPos:40};
  
 function setup() 
 {
+	stroke(1);
     createCanvas(windowWidth-5,windowHeight-5);
-    background(0);
     frameRate(60);
    
 	
@@ -48,13 +48,17 @@ function draw()
     var r = rinput.value();
     var g = ginput.value();
     var b = binput.value();
+	
+	background(r,g,b);
+	
+	redBlueGreenEllipse();
+	
     col = color(r,g,b);
    
 	colorSquare(r,g,b);
 	
     if (gridBool == true) 
 	{
-        stroke(0);
 		gridDraw();
     } 
 	else 
@@ -80,6 +84,7 @@ function draw()
  
 function mousePressed() 
 {
+	noStroke();
     if (streamBool == false) 
 	{
 		changeColors();
