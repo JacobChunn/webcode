@@ -40,7 +40,12 @@ function createIO()
     Callig = createButton('Calligraphy Pen');
     Callig.position(52,615);
     Callig.size(100);
-    Callig.mousePressed(setCallig);
+    Callig.mousePressed(setCallig);    
+	
+	ClearCanv = createButton('Clear Canvas');
+    ClearCanv.position(52,680);
+    ClearCanv.size(100);
+    ClearCanv.mousePressed(ClearCanvas);
 }
 
 function setSingle()
