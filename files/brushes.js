@@ -174,20 +174,85 @@ function changeColors()
 					single(i,j);
 					if (streamBool == true && lastI != -1 && lastJ != -1)
                     {
-						single(int((i+lastI)/2),int((j+lastJ)/2));
+						var mpI = (i+lastI)/2;
+						var mpJ = (j+lastJ)/2;
+						var qpI = (mpI+lastI)/2;
+						var qpJ = (mpJ+lastJ)/2;
+						var qqpI = (mpI+i)/2;
+						var qqpJ = (mpJ+j)/2;
+						
+						single(int(mpI),int(mpJ));
+						single(int(qpI),int(qpJ));
+						single(int(qqpI),int(qqpJ));
+						
+						single(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+						single(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+						single(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+						single(int((qqpI+i)/2),int((qqpJ+j)/2));
                     }
 				}
 				else if(brush == 'five')
 				{
 					five(i,j);
+					if (streamBool == true && lastI != -1 && lastJ != -1)
+                    {
+						var mpI = (i+lastI)/2;
+						var mpJ = (j+lastJ)/2;
+						var qpI = (mpI+lastI)/2;
+						var qpJ = (mpJ+lastJ)/2;
+						var qqpI = (mpI+i)/2;
+						var qqpJ = (mpJ+j)/2;
+						
+						five(int(mpI),int(mpJ));
+						five(int(qpI),int(qpJ));
+						five(int(qqpI),int(qqpJ));
+						five(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+						five(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+						five(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+						five(int((qqpI+i)/2),int((qqpJ+j)/2));
+                    }
 				}
 				else if(brush == 'circle')
 				{
 					circle(i,j);
+					if (streamBool == true && lastI != -1 && lastJ != -1)
+                    {
+						var mpI = (i+lastI)/2;
+						var mpJ = (j+lastJ)/2;
+						var qpI = (mpI+lastI)/2;
+						var qpJ = (mpJ+lastJ)/2;
+						var qqpI = (mpI+i)/2;
+						var qqpJ = (mpJ+j)/2;
+						
+						circle(int(mpI),int(mpJ));
+						circle(int(qpI),int(qpJ));
+						circle(int(qqpI),int(qqpJ));
+						circle(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+						circle(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+						circle(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+						circle(int((qqpI+i)/2),int((qqpJ+j)/2));
+                    }
 				}
 				else if(brush == 'callig')
 				{
 					callig(i,j);
+					if (streamBool == true && lastI != -1 && lastJ != -1)
+                    {
+						var mpI = (i+lastI)/2;
+						var mpJ = (j+lastJ)/2;
+						var qpI = (mpI+lastI)/2;
+						var qpJ = (mpJ+lastJ)/2;
+						var qqpI = (mpI+i)/2;
+						var qqpJ = (mpJ+j)/2;
+						
+						callig(int(mpI),int(mpJ));
+						callig(int(qpI),int(qpJ));
+						callig(int(qqpI),int(qqpJ));
+						callig(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+						callig(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+						callig(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+						callig(int((qqpI+i)/2),int((qqpJ+j)/2));
+                    }
 				}
 				
 				lastI = i;

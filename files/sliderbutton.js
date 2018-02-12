@@ -9,7 +9,7 @@ function createIO()
 	sliderRange(1,36,1)
 	gui.addGlobals('Rows');
 	
-	sliderRange(0,255,1,1);
+	sliderRange(0,255,1);
 	gui.addGlobals('Red', 'Green', 'Blue');
 	
     gridToggle = createButton('Toggle Grid');

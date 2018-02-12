@@ -5,9 +5,9 @@ var boxsize = 24;
 var Columns = 64;
 var Rows = 36;
 
-var Red = 1;
-var Green = 1;
-var Blue = 1;
+var Red = 0;
+var Green = 0;
+var Blue = 0;
 var gridToggle, single, five, circle, callig;
 var gridBool = true;
 var streamBool = true;
@@ -27,7 +27,7 @@ function setup()
 {
 	stroke(1);
     createCanvas(windowWidth-5,windowHeight-5);
-    frameRate(1);
+    frameRate(60);
    
 	
     createIO();
