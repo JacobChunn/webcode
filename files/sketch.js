@@ -2,8 +2,12 @@ var col;
 var brush = 'single';
 
 var boxsize = 24;
-var Columns = 64;
-var Rows = 36;
+
+var maxCols = 64;
+var maxRows = 64;
+
+var Columns = 32;
+var Rows = 32;
 
 var Red = 0;
 var Green = 0;

@@ -31,10 +31,10 @@ function ClearCanvas()
 {
 	var CanvColor = 120;  //Default Light Gray Cell
     noStroke();
-    for (var i=0; i < Columns; i++) //arrPos
+    for (var i=0; i < maxCols; i++) //arrPos
 	{  
         arrPos[i] = [];
-        for (var j=0; j < Rows; j++) 
+        for (var j=0; j < maxRows; j++) 
 		{
            
             arrPos[i][j] = new Square(i*boxsize+x.arrPos,j*boxsize+y.arrPos, boxsize, CanvColor);

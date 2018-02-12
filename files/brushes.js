@@ -1,11 +1,34 @@
 // -------------------------
 //TO ADD A NEW BRUSH, CREATE A FUNCTION WITH ITS PATTERN AND A NEW IF ELSE LOOP IN 'changeColors();'
 //A NEW BUTTON MUST BE CREATED IN 'sliderbutton.js' AS WELL
+//IF INTERPOLATION IS TO BE APPLIED TO THE BRUSH, A '%BRUSHNAME%'INTERP FUNCTION MUST BE MADE AS WELL.
 
 
 function single(i,j)
 {
 	arrPos[i][j].change(col);
+}
+
+function singleInterp(i,j)
+{
+	if (streamBool == true && lastI != -1 && lastJ != -1)
+	{
+		var mpI = (i+lastI)/2;
+		var mpJ = (j+lastJ)/2;
+		var qpI = (mpI+lastI)/2;
+		var qpJ = (mpJ+lastJ)/2;
+		var qqpI = (mpI+i)/2;
+		var qqpJ = (mpJ+j)/2;
+		
+		single(int(mpI),int(mpJ));
+		single(int(qpI),int(qpJ));
+		single(int(qqpI),int(qqpJ));
+		
+		single(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+		single(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+		single(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+		single(int((qqpI+i)/2),int((qqpJ+j)/2));
+	}
 }
 
 function five(i,j)
@@ -72,6 +95,27 @@ function five(i,j)
 		arrPos[i][j+1].change(col);
     }
 }
+
+function fiveInterp(i,j)
+{
+	if (streamBool == true && lastI != -1 && lastJ != -1)
+	{
+		var mpI = (i+lastI)/2;
+		var mpJ = (j+lastJ)/2;
+		var qpI = (mpI+lastI)/2;
+		var qpJ = (mpJ+lastJ)/2;
+		var qqpI = (mpI+i)/2;
+		var qqpJ = (mpJ+j)/2;
+		
+		five(int(mpI),int(mpJ));
+		five(int(qpI),int(qpJ));
+		five(int(qqpI),int(qqpJ));
+		five(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+		five(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+		five(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+		five(int((qqpI+i)/2),int((qqpJ+j)/2));
+	}
+}
  
 function callig(i,j)
 {
@@ -88,6 +132,27 @@ function callig(i,j)
 		arrPos[i][j].change(col);
 		arrPos[i-1][j+1].change(col);
     }
+}
+
+function calligInterp(i,j)
+{
+	if (streamBool == true && lastI != -1 && lastJ != -1)
+	{
+		var mpI = (i+lastI)/2;
+		var mpJ = (j+lastJ)/2;
+		var qpI = (mpI+lastI)/2;
+		var qpJ = (mpJ+lastJ)/2;
+		var qqpI = (mpI+i)/2;
+		var qqpJ = (mpJ+j)/2;
+		
+		callig(int(mpI),int(mpJ));
+		callig(int(qpI),int(qpJ));
+		callig(int(qqpI),int(qqpJ));
+		callig(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+		callig(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+		callig(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+		callig(int((qqpI+i)/2),int((qqpJ+j)/2));
+	}
 }
 
 function circle(i,j)
@@ -161,6 +226,27 @@ function circle(i,j)
 	}		
 }
 
+function circleInterp(i,j)
+{
+if (streamBool == true && lastI != -1 && lastJ != -1)
+	{
+		var mpI = (i+lastI)/2;
+		var mpJ = (j+lastJ)/2;
+		var qpI = (mpI+lastI)/2;
+		var qpJ = (mpJ+lastJ)/2;
+		var qqpI = (mpI+i)/2;
+		var qqpJ = (mpJ+j)/2;
+		
+		circle(int(mpI),int(mpJ));
+		circle(int(qpI),int(qpJ));
+		circle(int(qqpI),int(qqpJ));
+		circle(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
+		circle(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
+		circle(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
+		circle(int((qqpI+i)/2),int((qqpJ+j)/2));
+	}	
+}
+
 function changeColors()
 {
 	for (var i = 0; i < Columns; i ++) 
@@ -172,91 +258,27 @@ function changeColors()
 				if (brush == 'single')
 				{
 					single(i,j);
-					if (streamBool == true && lastI != -1 && lastJ != -1)
-                    {
-						var mpI = (i+lastI)/2;
-						var mpJ = (j+lastJ)/2;
-						var qpI = (mpI+lastI)/2;
-						var qpJ = (mpJ+lastJ)/2;
-						var qqpI = (mpI+i)/2;
-						var qqpJ = (mpJ+j)/2;
-						
-						single(int(mpI),int(mpJ));
-						single(int(qpI),int(qpJ));
-						single(int(qqpI),int(qqpJ));
-						
-						single(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
-						single(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
-						single(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
-						single(int((qqpI+i)/2),int((qqpJ+j)/2));
-                    }
+					singleInterp(i,j);
 				}
 				else if(brush == 'five')
 				{
 					five(i,j);
-					if (streamBool == true && lastI != -1 && lastJ != -1)
-                    {
-						var mpI = (i+lastI)/2;
-						var mpJ = (j+lastJ)/2;
-						var qpI = (mpI+lastI)/2;
-						var qpJ = (mpJ+lastJ)/2;
-						var qqpI = (mpI+i)/2;
-						var qqpJ = (mpJ+j)/2;
-						
-						five(int(mpI),int(mpJ));
-						five(int(qpI),int(qpJ));
-						five(int(qqpI),int(qqpJ));
-						five(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
-						five(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
-						five(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
-						five(int((qqpI+i)/2),int((qqpJ+j)/2));
-                    }
-				}
-				else if(brush == 'circle')
-				{
-					circle(i,j);
-					if (streamBool == true && lastI != -1 && lastJ != -1)
-                    {
-						var mpI = (i+lastI)/2;
-						var mpJ = (j+lastJ)/2;
-						var qpI = (mpI+lastI)/2;
-						var qpJ = (mpJ+lastJ)/2;
-						var qqpI = (mpI+i)/2;
-						var qqpJ = (mpJ+j)/2;
-						
-						circle(int(mpI),int(mpJ));
-						circle(int(qpI),int(qpJ));
-						circle(int(qqpI),int(qqpJ));
-						circle(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
-						circle(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
-						circle(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
-						circle(int((qqpI+i)/2),int((qqpJ+j)/2));
-                    }
+					fiveInterp(i,j);
 				}
 				else if(brush == 'callig')
 				{
 					callig(i,j);
-					if (streamBool == true && lastI != -1 && lastJ != -1)
-                    {
-						var mpI = (i+lastI)/2;
-						var mpJ = (j+lastJ)/2;
-						var qpI = (mpI+lastI)/2;
-						var qpJ = (mpJ+lastJ)/2;
-						var qqpI = (mpI+i)/2;
-						var qqpJ = (mpJ+j)/2;
-						
-						callig(int(mpI),int(mpJ));
-						callig(int(qpI),int(qpJ));
-						callig(int(qqpI),int(qqpJ));
-						callig(int((lastI+qpI)/2),int((lastJ+qpJ)/2));
-						callig(int((qpI+mpI)/2),int((qpJ+mpJ)/2));
-						callig(int((mpI+qqpI)/2),int((mpJ+qqpJ)/2));
-						callig(int((qqpI+i)/2),int((qqpJ+j)/2));
-                    }
+					calligInterp(i,j);
+				}				
+				else if(brush == 'circle')
+				{
+					circle(i,j);
+					circleInterp(i,j);
 				}
 				
 				lastI = i;
 				lastJ = j;
+				
 				if (mouseHeldCheck() == false) {
 					lastI = -1;
 					lastJ = -1;
@@ -266,10 +288,14 @@ function changeColors()
 	}
 }
 
+
 function mouseHeldCheck() {
-	if (mouseIsPressed == true && frameCheck == true) {
+	if ((mouseIsPressed == true && frameCheck == true) && mouseX >= x.arrPos && mouseY >= y.arrPos && mouseX <= x.arrPos + (Columns * boxsize) && mouseY <= y.arrPos + (Rows * boxsize)) 
+	{
 		return true;
-	} else {
+	} 
+	else 
+	{
 		return false;
 	}
 }

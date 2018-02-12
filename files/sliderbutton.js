@@ -3,10 +3,10 @@ function createIO()
 	
 	gui = createGui('Settings:');
 	
-	sliderRange(1,64,1);
+	sliderRange(1,maxCols,1);
 	gui.addGlobals('Columns');
 	
-	sliderRange(1,36,1)
+	sliderRange(1,maxRows,1)
 	gui.addGlobals('Rows');
 	
 	sliderRange(0,255,1);
@@ -68,8 +68,8 @@ function setCallig()
     brush = 'callig';
 }
 
- function streamCheck() 
- {
+function streamCheck() 
+{
     if (streamBool == true) 
 	{
         streamBool = false;
