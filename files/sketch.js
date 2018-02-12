@@ -1,23 +1,28 @@
-var col;
 var brush = 'single';
 
 var boxsize = 24;
-
 var maxCols = 64;
-var maxRows = 64;
-
-var Columns = 32;
-var Rows = 32;
+var maxRows = 36;
+var Columns = 64;
+var Rows = 36;
+var savedCols = 4;
+var savedRows = 3;
 
 var Red = 0;
 var Green = 0;
 var Blue = 0;
+
+
 var gridToggle, single, five, circle, callig;
 var gridBool = true;
 var streamBool = true;
 
+var selMode = 'Select';
+
 arrPos = [];
-saveSquares = [];
+savedSquares = [];
+sampleColors = [];
+var a;
 
 var x = {arrPos:240};
 var y = {arrPos:40};
@@ -29,14 +34,14 @@ var frameCheck = false;
 
 function setup() 
 {
-	stroke(1);
-    createCanvas(windowWidth-5,windowHeight-5);
+    createCanvas(windowWidth,windowHeight);
     frameRate(60);
    
 	
     createIO();
    
-    ClearCanvas();    
+    ClearCanvas();  
+	
 	
 }
  
@@ -55,38 +60,23 @@ function draw()
 	
     col = color(r,g,b);
    	
-	if (mouseIsPressed == true) {
-		frameCheck = true;
-	} else if (mouseIsPressed == false) {
-		frameCheck = false;
-	}
-	
-    if (gridBool == true) 
-	{
-		gridDraw();
-    } 
-	else 
-	{
-        noStroke();
-        for (var i=0; i < Columns; i++) 
-		{
-            for (var j=0; j < Rows; j++) 
-			{
-				fill(arrPos[i][j].tell());
-				arrPos[i][j].show();
-            }
-        }
-       
-       
-    }
+	gridFunc();
+    
     if (streamBool == true && mouseIsPressed) 
 	{ 
         changeColors();
     }
 	
-	noFill();
-	stroke(0);
-	rect(240,40,Columns*boxsize,Rows*boxsize);
+	for (var i=0; i < savedCols; i++) 
+	{
+		for (var j=0; j < savedRows; j++) 
+		{
+			fill(savedSquares[i][j].tell());
+			savedSquares[i][j].show();
+		}
+	}  
+	
+
 }
 
  

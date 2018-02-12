@@ -40,5 +40,16 @@ function ClearCanvas()
             arrPos[i][j] = new Square(i*boxsize+x.arrPos,j*boxsize+y.arrPos, boxsize, CanvColor);
             arrPos[i][j].show();
         }
-    } 
+    }
+	
+	for (var i = 0; i < savedCols; i++)
+	{
+		savedSquares[i] = [];
+		for (var j = 0; j < savedRows; j++)
+		{
+			savedSquares[i][j] = new Square(i*boxsize+52,j*boxsize+725,boxsize,int(random(255)));
+			savedSquares[i][j].show();
+		}
+	}
+	
 }

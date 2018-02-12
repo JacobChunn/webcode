@@ -45,7 +45,24 @@ function createIO()
 	ClearCanv = createButton('Clear Canvas');
     ClearCanv.position(52,680);
     ClearCanv.size(100);
-    ClearCanv.mousePressed(ClearCanvas);
+    ClearCanv.mousePressed(ClearCanvas);	
+	
+	toggleSaved = createButton('Switch-Set/Select');
+    toggleSaved.position(52,800);
+    toggleSaved.size(100);
+    toggleSaved.mousePressed(togSetSelect);
+}
+
+function togSetSelect()
+{
+    if (selMode == 'Select') 
+	{
+        selMode = 'Set';
+    } 
+	else if (selMode == 'Set') 
+	{
+        selMode = 'Select';
+    }
 }
 
 function setSingle()
@@ -111,4 +128,35 @@ function gridCheck()
 	{
         gridBool = true;
     }
+}
+
+function gridFunc()
+{
+	if (gridBool == true) 
+	{
+		gridDraw();
+    } 
+	else 
+	{
+        noStroke();
+        for (var i=0; i < Columns; i++) 
+		{
+            for (var j=0; j < Rows; j++) 
+			{
+				fill(arrPos[i][j].tell());
+				arrPos[i][j].show();
+            }
+        }     
+    }
+
+	noFill();
+	stroke(0);
+	rect(240,40,Columns*boxsize,Rows*boxsize);
+	
+	fill(255);
+	stroke(0);
+	strokeWeight(2);
+	textSize(36);
+	text(selMode,52,870);
+	strokeWeight(1);
 }
