@@ -17,12 +17,17 @@ saveSquares = [];
 
 var x = {arrPos:240};
 var y = {arrPos:40};
- 
+
+var lastJ = -1;
+var lastI = -1;
+
+var frameCheck = false;
+
 function setup() 
 {
 	stroke(1);
     createCanvas(windowWidth-5,windowHeight-5);
-    frameRate(60);
+    frameRate(1);
    
 	
     createIO();
@@ -33,6 +38,11 @@ function setup()
  
 function draw()
 {
+	if (mouseHeldCheck() == false) {
+		lastI = -1;
+		lastJ = -1;
+	}
+	
     var r = Red;
     var g = Green;
     var b = Blue;
@@ -41,6 +51,12 @@ function draw()
 	
     col = color(r,g,b);
    	
+	if (mouseIsPressed == true) {
+		frameCheck = true;
+	} else if (mouseIsPressed == false) {
+		frameCheck = false;
+	}
+	
     if (gridBool == true) 
 	{
 		gridDraw();

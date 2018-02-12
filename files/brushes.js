@@ -172,6 +172,10 @@ function changeColors()
 				if (brush == 'single')
 				{
 					single(i,j);
+					if (streamBool == true && lastI != -1 && lastJ != -1)
+                    {
+						single(int((i+lastI)/2),int((j+lastJ)/2));
+                    }
 				}
 				else if(brush == 'five')
 				{
@@ -185,7 +189,22 @@ function changeColors()
 				{
 					callig(i,j);
 				}
+				
+				lastI = i;
+				lastJ = j;
+				if (mouseHeldCheck() == false) {
+					lastI = -1;
+					lastJ = -1;
+				}
 			}
 		} 
+	}
+}
+
+function mouseHeldCheck() {
+	if (mouseIsPressed == true && frameCheck == true) {
+		return true;
+	} else {
+		return false;
 	}
 }
