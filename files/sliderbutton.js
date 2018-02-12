@@ -151,6 +151,7 @@ function gridFunc()
 
 	noFill();
 	stroke(0);
+	strokeWeight(4);
 	rect(240,40,Columns*boxsize,Rows*boxsize);
 	
 	fill(255);
