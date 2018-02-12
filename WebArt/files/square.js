@@ -1,11 +1,11 @@
 class Square 
 {
-    constructor(x,y,w) 
+    constructor(x,y,w,CanvColor) 
 	{
         this.x = x;
         this.y = y;
         this.w = w;
-        this.color = 125;
+        this.color = CanvColor;
     }
    
     show() 

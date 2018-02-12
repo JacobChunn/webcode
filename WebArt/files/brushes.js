@@ -17,19 +17,19 @@ function five(i,j)
         arrPos[i+1][j].change(col);
         arrPos[i][j+1].change(col);
     } 
-	else if (i == 0 && j == (rows - 1)) 
+	else if (i == 0 && j == (Rows - 1)) 
 	{
         arrPos[i][j].change(col);
         arrPos[i+1][j].change(col);
         arrPos[i][j-1].change(col);
     } 
-	else if (i == (cols - 1) && j == 0) 
+	else if (i == (Columns - 1) && j == 0) 
 	{
         arrPos[i][j].change(col);
         arrPos[i][j+1].change(col);
         arrPos[i-1][j].change(col);
     } 
-	else if (i == (cols - 1) && j == (rows - 1)) 
+	else if (i == (Columns - 1) && j == (Rows - 1)) 
 	{
         arrPos[i][j].change(col);
         arrPos[i][j-1].change(col);
@@ -42,7 +42,7 @@ function five(i,j)
         arrPos[i+1][j].change(col);
         arrPos[i][j+1].change(col);
     } 
-	else if (i == (cols - 1)) 
+	else if (i == (Columns - 1)) 
 	{
         arrPos[i][j].change(col);
         arrPos[i-1][j].change(col);
@@ -56,7 +56,7 @@ function five(i,j)
         arrPos[i+1][j].change(col);
         arrPos[i][j+1].change(col);
     } 
-	else if (j == (rows - 1)) 
+	else if (j == (Rows - 1)) 
 	{
         arrPos[i][j].change(col);
         arrPos[i-1][j].change(col);
@@ -79,7 +79,7 @@ function callig(i,j)
 	{
         arrPos[i][j].change(col);
     } 
-	else if (j == (rows - 1)) 
+	else if (j == (Rows - 1)) 
 	{
         arrPos[i][j].change(col)
     } 
@@ -98,19 +98,19 @@ function circle(i,j)
 		arrPos[i+1][j+1].change(col);
 		arrPos[i+1][j].change(col);
 	}
-	else if (i == (cols - 1) && j ==0)
+	else if (i == (Columns - 1) && j ==0)
 	{
 		arrPos[i-1][j].change(col);
 		arrPos[i-1][j+1].change(col);
 		arrPos[i][j+1].change(col);
 	}
-	else if (i == 0 && j == (rows-1))
+	else if (i == 0 && j == (Rows-1))
 	{
 		arrPos[i][j-1].change(col);
 		arrPos[i+1][j-1].change(col);
 		arrPos[i+1][j].change(col);
 	}
-	else if (i == (cols - 1) && j ==(rows-1))
+	else if (i == (Columns - 1) && j ==(Rows-1))
 	{
 		arrPos[i-1][j].change(col);
 		arrPos[i-1][j-1].change(col);
@@ -124,7 +124,7 @@ function circle(i,j)
 		arrPos[i+1][j+1].change(col);
 		arrPos[i][j+1].change(col);
 	}
-	else if (i == cols-1)
+	else if (i == Columns-1)
 	{
 		arrPos[i][j-1].change(col);
 		arrPos[i-1][j-1].change(col);
@@ -140,7 +140,7 @@ function circle(i,j)
 		arrPos[i+1][j+1].change(col);
 		arrPos[i+1][j].change(col);
 	}
-	else if (j == rows-1)
+	else if (j == Rows-1)
 	{
 		arrPos[i-1][j].change(col);
 		arrPos[i-1][j-1].change(col);
@@ -163,9 +163,9 @@ function circle(i,j)
 
 function changeColors()
 {
-	for (var i = 0; i < cols; i ++) 
+	for (var i = 0; i < Columns; i ++) 
 	{
-		for (var j=0; j < rows; j ++) 
+		for (var j=0; j < Rows; j ++) 
 		{
 			if (mouseX > (i*boxsize+x.arrPos) && mouseX < ( i *boxsize+x.arrPos+boxsize) && mouseY > (j*boxsize+y.arrPos) && mouseY < (j*boxsize+y.arrPos+boxsize)) 
 			{

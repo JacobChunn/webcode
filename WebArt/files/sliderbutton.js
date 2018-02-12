@@ -1,72 +1,46 @@
 function createIO()
 {
-	stroke(255);
-	rinput = createSlider(0,255,0);
-    rinput.position(50,50);
-    rinput.size(100);
 	
-   
-    ginput = createSlider(0,255,0);
-    ginput.position(50,100);
-    ginput.size(100);
+	gui = createGui('Settings:');
 	
-   
-    binput = createSlider(0,255,0);
-    binput.position(50,150);
-    binput.size(100);
+	sliderRange(1,64,1);
+	gui.addGlobals('Columns');
 	
-   
+	sliderRange(1,36,1)
+	gui.addGlobals('Rows');
+	
+	sliderRange(0,255,1,1);
+	gui.addGlobals('Red', 'Green', 'Blue');
+	
     gridToggle = createButton('Toggle Grid');
-    gridToggle.position(52,300);
+    gridToggle.position(52,350);
     gridToggle.size(100);
     gridToggle.mousePressed(gridCheck);
     
     streamToggle = createButton('Toggle Stream');
-    streamToggle.position(52,350);
+    streamToggle.position(52,400);
     streamToggle.size(100);
     streamToggle.mousePressed(streamCheck);
 
     Single = createButton('Single Pen');
-    Single.position(52,415);
+    Single.position(52,465);
     Single.size(100);
     Single.mousePressed(setSingle);
     
     Five = createButton('Five Pen');
-    Five.position(52,465);
+    Five.position(52,515);
     Five.size(100);
     Five.mousePressed(setFive);
     
     Circle = createButton('Circle Pen');
-    Circle.position(52,515);
+    Circle.position(52,565);
     Circle.size(100);
     Circle.mousePressed(setCircle);
     
     Callig = createButton('Calligraphy Pen');
-    Callig.position(52,565);
+    Callig.position(52,615);
     Callig.size(100);
     Callig.mousePressed(setCallig);
-}
-
-function colorSquare(ri,gi,bi)
-{
-	colstr = ri + ', ' + gi + ', '  + bi;
-	textSize(24);
-	fill(255);
-	strokeWeight(4);
-	stroke(0);
-	text(colstr,42,225)
-	strokeWeight(1);
-}
-
-function redBlueGreenEllipse() {
-	fill(255,0,0);
-	ellipse(38,63, 25,25);
-	
-	fill(0,255,0);
-	ellipse(38,113, 25,25);
-	
-	fill(0,0,255);
-	ellipse(38,163, 25,25);
 }
 
 function setSingle()
@@ -104,9 +78,9 @@ function setCallig()
 function gridDraw() 
 {
 	noStroke();
-    for (var i=0; i < cols; i++) 
+    for (var i=0; i < Columns; i++) 
 	{
-        for (var j=0; j < rows; j++) 
+        for (var j=0; j < Rows; j++) 
 		{
 			fill(arrPos[i][j].tell());
 			arrPos[i][j].show();
@@ -114,11 +88,11 @@ function gridDraw()
     }
 	
 	stroke(0);
-	for (var i=0; i <= rows; i++) {
-		line(x.arrPos,y.arrPos + (i * boxsize), x.arrPos + (cols * boxsize), y.arrPos + (i * boxsize));
+	for (var i=0; i <= Rows; i++) {
+		line(x.arrPos,y.arrPos + (i * boxsize), x.arrPos + (Columns * boxsize), y.arrPos + (i * boxsize));
 	}
-	for (var j=0; j <= cols; j++) {
-		line(x.arrPos + (j * boxsize), y.arrPos, x.arrPos + (j * boxsize), y.arrPos + (rows * boxsize));
+	for (var j=0; j <= Columns; j++) {
+		line(x.arrPos + (j * boxsize), y.arrPos, x.arrPos + (j * boxsize), y.arrPos + (Rows * boxsize));
 	}
 }
  

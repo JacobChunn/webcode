@@ -2,13 +2,12 @@ var col;
 var brush = 'single';
 
 var boxsize = 24;
-var cols = 64;
-var rows = 36;
+var Columns = 64;
+var Rows = 36;
 
-var lastI = 'na';
-var lastJ;
-
-var rinput,ginput,binput;
+var Red = 1;
+var Green = 1;
+var Blue = 1;
 var gridToggle, single, five, circle, callig;
 var gridBool = true;
 var streamBool = true;
@@ -16,7 +15,7 @@ var streamBool = true;
 arrPos = [];
 saveSquares = [];
 
-var x = {arrPos:200};
+var x = {arrPos:240};
 var y = {arrPos:40};
  
 function setup() 
@@ -28,35 +27,31 @@ function setup()
 	
     createIO();
    
-    fill(150);  //Default Light Gray Cell
+    var CanvColor = 255;  //Default Light Gray Cell
     noStroke();
-    for (var i=0; i < cols; i++) //arrPos
+    for (var i=0; i < Columns; i++) //arrPos
 	{  
         arrPos[i] = [];
-        for (var j=0; j < rows; j++) 
+        for (var j=0; j < Rows; j++) 
 		{
            
-            arrPos[i][j] = new Square(i*boxsize+x.arrPos,j*boxsize+y.arrPos, boxsize);
+            arrPos[i][j] = new Square(i*boxsize+x.arrPos,j*boxsize+y.arrPos, boxsize, CanvColor);
             arrPos[i][j].show();
         }
     }     
 	
 }
  
-function draw() 
+function draw()
 {
-    var r = rinput.value();
-    var g = ginput.value();
-    var b = binput.value();
+    var r = Red;
+    var g = Green;
+    var b = Blue;
 	
 	background(r,g,b);
 	
-	redBlueGreenEllipse();
-	
     col = color(r,g,b);
-   
-	colorSquare(r,g,b);
-	
+   	
     if (gridBool == true) 
 	{
 		gridDraw();
@@ -64,9 +59,9 @@ function draw()
 	else 
 	{
         noStroke();
-        for (var i=0; i < cols; i++) 
+        for (var i=0; i < Columns; i++) 
 		{
-            for (var j=0; j < rows; j++) 
+            for (var j=0; j < Rows; j++) 
 			{
 				fill(arrPos[i][j].tell());
 				arrPos[i][j].show();
@@ -79,6 +74,10 @@ function draw()
 	{ 
         changeColors();
     }
+	
+	noFill();
+	stroke(0);
+	rect(240,40,Columns*boxsize,Rows*boxsize);
 }
 
  
