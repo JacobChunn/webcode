@@ -25,6 +25,11 @@ class Square
 	{
         return this.color;
     }
+	saveSquare(rrr,ggg,bbb) {
+		this.color = color(rrr,ggg,bbb);
+		fill(this.color);
+		rect(this.x,this.y,this.w,this.w);
+	}
 }
 
 function ClearCanvas()
@@ -42,14 +47,18 @@ function ClearCanvas()
         }
     }
 	
+	
+	
 	for (var i = 0; i < savedCols; i++)
 	{
 		savedSquares[i] = [];
 		for (var j = 0; j < savedRows; j++)
 		{
-			savedSquares[i][j] = new Square(i*boxsize+52,j*boxsize+725,boxsize,int(random(255)));
-			savedSquares[i][j].show();
+			var rr = int(random(0,255));
+			var gg = int(random(0,255));
+			var bb = int(random(0,255));
+			savedSquares[i][j] = new Square(i*boxsize+52,j*boxsize+725,boxsize,150);
+			savedSquares[i][j].saveSquare(rr,gg,bb);
 		}
 	}
-	
 }

@@ -42,11 +42,12 @@ function setup()
    
     ClearCanvas();  
 	
-	
+	//createRandom();
 }
  
 function draw()
 {
+	
 	if (mouseHeldCheck() == false) {
 		lastI = -1;
 		lastJ = -1;
